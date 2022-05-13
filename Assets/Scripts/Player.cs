@@ -45,7 +45,9 @@ public class Player : MonoBehaviour
     {
         float direction = Input.GetAxisRaw("Horizontal");
         animator.SetBool("Walk", direction != 0);
-        rigidBody.AddForce(new Vector2(direction * forceMagnitude, 0));
+        Vector3 newPos = transform.position;
+        newPos.x += direction * Time.deltaTime * 5;
+        transform.position = newPos;
         switch (direction)
         {
             case -1:
